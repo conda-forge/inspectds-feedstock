@@ -10,7 +10,7 @@ source:
   sha256: ff2a06d86222887eed8611bd02077d696cb4d4028893c76540b4373b6e719d76
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   noarch: python
   entry_points:
     - inspectds = "inspectds.cli:app"
@@ -19,16 +19,16 @@ build:
 requirements:
   host:
     - python >=3.9
+    - pip
     - poetry-core >=1.0.0
     - poetry-dynamic-versioning
-    - pip
   run:
     - python >=3.9
-    - xarray
-    - zarr >=2.8
-    - typer
     - netcdf4
-  run_constrained:
+    - typer
+    - xarray
+    - xarray_selafin
+    - zarr >=2.8
     - cfgrib >=0.9
 
 test:
@@ -36,15 +36,18 @@ test:
     - inspectds
   commands:
     - pip check
+    - inspectds --version
+    - inspectds --help
   requires:
     - pip
 
 about:
   home: https://github.com/pmav99/inspectds.git
-  summary: 'A CLI utility to print metadata of datasets in various formats (e.g. NetCDF, zarr, GRIB etc)'
+  summary: 'A CLI utility to print metadata of datasets in various formats (e.g. NetCDF, zarr, GRIB, Selafin etc)'
   license: Unlicense
   license_file: LICENSE
 
 extra:
   recipe-maintainers:
     - pmav99
+    - tomsail
