@@ -44,7 +44,7 @@ test:
 about:
   home: https://github.com/pmav99/inspectds.git
   summary: 'A CLI utility to print metadata of datasets in various formats (e.g. NetCDF, zarr, GRIB, Selafin etc)'
-  license: The Unlicense
+  license: Unlicense
   license_file: LICENSE
 
 extra:
