@@ -1,5 +1,5 @@
 {% set name = "inspectds" %}
-{% set version = "0.2.2" %}
+{% set version = "0.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,28 +7,28 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/inspectds-{{ version }}.tar.gz
-  sha256: dacfc2243921a2822d8ba1d5101ffc4a899c0dfcd4db178bdf32131b9c1d05d5
+  sha256: da6fe196464ac9ef7d348f46f79be12cd07d967e2a4e47359b19688c398946f0
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   noarch: python
   entry_points:
-    - inspectds = "inspectds.cli:app"
+    - inspectds = inspectds.cli:app
   number: 0
 
 requirements:
   host:
     - python >=3.9
+    - pip
     - poetry-core >=1.0.0
     - poetry-dynamic-versioning
-    - pip
   run:
     - python >=3.9
-    - xarray
-    - zarr >=2.8
-    - typer
     - netcdf4
-  run_constrained:
+    - typer
+    - xarray
+    - xarray_selafin
+    - zarr >=2.8
     - cfgrib >=0.9
 
 test:
@@ -36,15 +36,18 @@ test:
     - inspectds
   commands:
     - pip check
+    - inspectds --version
+    - inspectds --help
   requires:
     - pip
 
 about:
   home: https://github.com/pmav99/inspectds.git
-  summary: 'A CLI utility to print metadata of datasets in various formats (e.g. NetCDF, zarr, GRIB etc)'
+  summary: 'A CLI utility to print metadata of datasets in various formats (e.g. NetCDF, zarr, GRIB, Selafin etc)'
   license: Unlicense
   license_file: LICENSE
 
 extra:
   recipe-maintainers:
     - pmav99
+    - tomsail
