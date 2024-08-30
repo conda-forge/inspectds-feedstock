@@ -7,7 +7,7 @@ Home: https://github.com/pmav99/inspectds.git
 
 Package license: Unlicense
 
-Summary: A CLI utility to print metadata of datasets in various formats (e.g. NetCDF, zarr, GRIB etc)
+Summary: A CLI utility to print metadata of datasets in various formats (e.g. NetCDF, zarr, GRIB, Selafin etc)
 
 Current build status
 ====================
@@ -144,4 +144,5 @@ Feedstock Maintainers
 =====================
 
 * [@pmav99](https://github.com/pmav99/)
+* [@tomsail](https://github.com/tomsail/)
 

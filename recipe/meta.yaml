@@ -1,5 +1,5 @@
 {% set name = "inspectds" %}
-{% set version = "0.3.1" %}
+{% set version = "0.3.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/inspectds-{{ version }}.tar.gz
-  sha256: da6fe196464ac9ef7d348f46f79be12cd07d967e2a4e47359b19688c398946f0
+  sha256: 0caccf5a5a95ce9217faa7ec6eef0068bf7d3f7ae0677469573d58a3b0f71d8f
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
