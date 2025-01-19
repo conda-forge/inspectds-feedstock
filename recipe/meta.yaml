@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/inspectds-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/inspectds-{{ version }}.tar.gz
   sha256: 0caccf5a5a95ce9217faa7ec6eef0068bf7d3f7ae0677469573d58a3b0f71d8f
 
 build:
@@ -14,16 +14,16 @@ build:
   noarch: python
   entry_points:
     - inspectds = inspectds.cli:app
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - pip
     - poetry-core >=1.0.0
     - poetry-dynamic-versioning
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - netcdf4
     - typer
     - xarray
@@ -40,6 +40,7 @@ test:
     - inspectds --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/pmav99/inspectds.git
